@@ -1,0 +1,406 @@
+/* Main container */
+.app {
+  display: flex;
+  height: 100vh;
+  width: 1400px;
+}
+
+/* Sidebar styling */
+.sidebar {
+  background-color: #f4f4f4;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Main content styling */
+.main-content {
+  flex-grow: 1;
+  width: 80%;
+  background-color: #E3F2FD;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  /* padding: 20px; */
+  text-align: center;
+}
+
+/* Welcome section */
+.welcome-section {
+  max-width: 800px;
+}
+
+.welcome-image {
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 16px;
+  color: #555;
+  margin: 0;
+}
+
+footer {
+  font-size: 14px;
+  color: #888;
+  margin-top: 30px;
+}
+
+/* Group Content Container */
+.group-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 0; /* Remove padding to make it flush with the container */
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+/* Header at the top including back button, initials, and group title */
+.group-content h2 {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 10px 20px;
+  margin: 0;
+  background-color: #1a1aff;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: bold;
+  position: absolute; /* Change position to absolute */
+  top: -10px; /* Move it upwards by 10px */
+  left: 0;
+  right: 0;
+  z-index: 100;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+
+
+/* Back Button Styling in Header */
+.back-btn {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 24px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+/* Group Initials in Header */
+.group-initials-header {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #333;
+  color: #ffffff;
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+/* Group Title in Header */
+.group-title-header {
+  font-size: 18px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+/* Notes List */
+.notes-list {
+  flex: 1;
+  padding: 10px 20px; /* Adjusted padding for alignment */
+  overflow-y: auto;
+  margin-bottom: 20px;
+}
+
+/* Note Item Styling */
+.note-item {
+  width: 1000px; /* Full width of the container */
+  background-color: #f9f9f9;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+  color: #555;
+}
+
+.note-item p {
+  margin: 0;
+}
+
+.note-item small {
+  display: block;
+  font-size: 12px;
+  color: #999;
+  margin-top: 5px;
+}
+
+/* Ensure the input area is at the bottom */
+.note-input-container {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px; /* Consistent padding */
+  background-color: #1a1aff;
+  position: sticky;
+  bottom: 0;
+  margin-top: 250px;
+  z-index: 100;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.note-textarea {
+  /* flex: 1; */
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  resize: none;
+  margin-right: 10px;
+  background-color: #ffffff;
+}
+
+.note-textarea::placeholder {
+  color: #999;
+}
+
+.send-btn {
+  background-color: #1e88e5;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+  .app {
+    padding: 0;
+  }
+
+  /* Fullscreen Sidebar on mobile */
+  .sidebar {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #ffffff;
+    z-index: 1000;
+    transform: translateX(0);
+    transition: transform 0.3s ease-in-out;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Hide sidebar when notes are visible */
+  .sidebar.hide {
+    transform: translateX(-100%);
+  }
+
+  /* Main content area on mobile */
+  .main-content {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #e3f2fd;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Show main content when sidebar is hidden */
+  .main-content.active {
+    transform: translateX(0);
+  }
+
+  /* Header in main content */
+  .group-header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #1a1aff;
+    color: #ffffff;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  /* Back button styling */
+  .back-btn {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 24px;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+
+  /* Group initials in header */
+  .group-initials-header {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #333;
+    color: #ffffff;
+    border-radius: 50%;
+    font-size: 14px;
+    font-weight: bold;
+    margin-right: 10px;
+  }
+
+  /* Group title styling */
+  .group-title-header {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+  }
+
+  /* Notes list styling */
+  .notes-list {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+  }
+
+  /* Note item styling */
+  .note-item {
+    background-color: #ffffff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+  }
+
+  .note-item small {
+    display: block;
+    font-size: 12px;
+    color: #999;
+    margin-top: 5px;
+  }
+
+  /* Note input area at the bottom */
+  .note-input-container {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #1a1aff;
+    position: sticky;
+    bottom: 0;
+    z-index: 100;
+  }
+
+  .group-name {
+    font-size: 24px;
+    color: #333333;
+  }
+  
+  /* Text input styling */
+  .note-textarea {
+    flex: 1;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    resize: none;
+  }
+
+  /* Send button styling */
+  .send-btn {
+    margin-left: 10px;
+    font-size: 24px;
+    color: #ffffff;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  /* Floating "+" button for mobile */
+  .add-group-btn {
+    position: fixed;
+    bottom: 60px;
+    left: 300px;
+    width: 50px;
+    height: 50px;
+    background-color: #1a1aff;
+    color: #ffffff;
+    font-size: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    z-index: 1000;
+  }
+
+  /* Adjustments to center-align elements inside sidebar on mobile */
+  .sidebar h2 {
+    font-size: 32px;
+    margin-right: 70px;
+  }
+
+  .groups-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .group-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+    cursor: pointer;
+    width: 100%;
+    max-width: 90%;
+  }
+
+  .group-item:hover {
+    background-color: #f0f0f0;
+  }
+}

@@ -1,0 +1,53 @@
+.note-input-container {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  background-color: #1a1aff;
+  border-radius: 0 0 8px 8px;
+  width: 100%;
+  box-sizing: border-box;
+  position: sticky;
+  bottom: 0;
+  left: 0;
+}
+
+.note-textarea {
+  /* flex-grow: 1; */
+  width: 1000px;
+  resize: none;
+  padding: 12px;
+  border: none;
+  border-radius: 20px;
+  font-size: 14px;
+  outline: none;
+  background-color: #ffffff;
+  color: #555;
+  margin-right: 10px;
+  box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.note-textarea::placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+.send-btn {
+  background-color: #1e88e5;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s;
+}
+
+.send-btn:hover {
+  background-color: #1565c0;
+}
