@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://vyankateshkedar.github.io/Notes-App",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -27,5 +28,3 @@
     "vite": "^5.4.10"
   }
 }
-"homepage": "https://vyankateshkedar.github.io/Notes-App"
-
