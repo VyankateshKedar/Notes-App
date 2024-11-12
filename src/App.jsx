@@ -91,10 +91,12 @@ const App = () => {
             {/* Header section with back button and group title */}
             <div className="group-header">
               <button className="back-btn" onClick={handleBackToSidebar}>←</button>
-              <div className="group-initials-header" style={{ backgroundColor: selectedGroup.color }}>
-                {selectedGroup.initials}
+              <div className="group-title-header">
+                <div className="group-initials-header" style={{ backgroundColor: selectedGroup.color }}>
+                  {selectedGroup.initials}
+                </div>
+                <span>{selectedGroup.name}</span>
               </div>
-              <h2 className="group-title-header">{selectedGroup.name}</h2>
             </div>
 
             {/* Notes list */}
