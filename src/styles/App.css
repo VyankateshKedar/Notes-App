@@ -194,6 +194,9 @@ footer {
 @media (max-width: 600px) {
   .app {
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   /* Fullscreen Sidebar on mobile */
@@ -236,6 +239,80 @@ footer {
   /* Show main content when sidebar is hidden */
   .main-content.active {
     transform: translateX(0);
+  }
+
+  /* Sidebar title styling */
+  .sidebar h2 {
+    font-size: 30px;
+    margin-bottom: 20px;
+    color: #333333;
+    margin-right: 80px;
+  }
+
+  /* Group items styling */
+  .groups-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 0;
+    gap: 10px;
+  }
+
+  .group-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 90%;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+
+  .group-item:hover {
+    background-color: #f0f0f0;
+  }
+
+  /* Group initials in sidebar */
+  .group-initials {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #333;
+    color: #ffffff;
+    border-radius: 50%;
+    font-size: 24px;
+    font-weight: bold;
+    margin-right: 15px;
+  }
+
+  /* Group name in sidebar */
+  .group-name {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333333;
+  }
+
+  /* Floating "+" button for mobile */
+  .add-group-btn {
+    position: fixed;
+        bottom: 80px;
+        left: 280px;
+        width: 50px;
+        height: 50px;
+        background-color: #1a1aff;
+        color: #ffffff;
+        font-size: 28px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        z-index: 1000;
   }
 
   /* Header in main content */
@@ -317,11 +394,6 @@ footer {
     z-index: 100;
   }
 
-  .group-name {
-    font-size: 24px;
-    color: #333333;
-  }
-  
   /* Text input styling */
   .note-textarea {
     flex: 1;
@@ -342,53 +414,5 @@ footer {
     border: none;
     cursor: pointer;
   }
-
-  /* Floating "+" button for mobile */
-  .add-group-btn {
-    position: fixed;
-    bottom: 60px;
-    left: 300px;
-    width: 50px;
-    height: 50px;
-    background-color: #1a1aff;
-    color: #ffffff;
-    font-size: 28px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    z-index: 1000;
-  }
-
-  /* Adjustments to center-align elements inside sidebar on mobile */
-  .sidebar h2 {
-    font-size: 32px;
-    margin-right: 70px;
-  }
-
-  .groups-list {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    margin-top: 20px;
-  }
-
-  .group-item {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    border-radius: 8px;
-    transition: background-color 0.2s;
-    cursor: pointer;
-    width: 100%;
-    max-width: 90%;
-  }
-
-  .group-item:hover {
-    background-color: #f0f0f0;
-  }
 }
+
