@@ -12,8 +12,8 @@ const App = () => {
   const [groups, setGroups] = useLocalStorage('groups', []);
   const [notes, setNotes] = useLocalStorage('notes', []);
   const [selectedGroup, setSelectedGroup] = useState(null);
-  const [isSidebarVisible, setIsSidebarVisible] = useState(true); // Controls visibility of sidebar on mobile
-  const [isPopupOpen, setIsPopupOpen] = useState(false); // Controls visibility of group creation popup
+  const [isSidebarVisible, setIsSidebarVisible] = useState(true); // Controls sidebar visibility on mobile
+  const [isPopupOpen, setIsPopupOpen] = useState(false); // Controls group creation popup visibility
   const noteInputRef = useRef(null);
 
   // Handle adding a new note
@@ -26,7 +26,6 @@ const App = () => {
         time: new Date().toLocaleTimeString(),
         groupId: selectedGroup.id,
       };
-
       setNotes((prevNotes) => [...prevNotes, newNote]);
     }
   };
@@ -34,9 +33,9 @@ const App = () => {
   // Handle selecting a group
   const handleSelectGroup = (group) => {
     setSelectedGroup(group);
-    setIsSidebarVisible(false); // Hide sidebar and show main content on mobile
+    setIsSidebarVisible(false); // Hide sidebar on mobile when a group is selected
     if (noteInputRef.current) {
-      noteInputRef.current.focus();
+      noteInputRef.current.focus(); // Focus on note input field
     }
   };
 
@@ -47,31 +46,26 @@ const App = () => {
       name: groupName,
       color: color,
       initials: groupName
-        .split(" ")
+        .split(' ')
         .map((word) => word[0])
-        .join("")
+        .join('')
         .toUpperCase(),
     };
-
-    setGroups((prevGroups) => [...prevGroups, newGroup]);
-    setIsPopupOpen(false); // Close popup after group creation
+    setGroups((prevGroups) => [...prevGroups, newGroup]); // Add new group to the list
+    setIsPopupOpen(false); // Close the group creation popup
   };
 
   // Handle returning to the sidebar view
   const handleBackToSidebar = () => {
     setIsSidebarVisible(true);
-    setSelectedGroup(null);
+    setSelectedGroup(null); // Deselect the group
   };
 
   // Handle opening the popup to create a new group
-  const handleOpenPopup = () => {
-    setIsPopupOpen(true);
-  };
+  const handleOpenPopup = () => setIsPopupOpen(true);
 
   // Handle closing the popup
-  const handleClosePopup = () => {
-    setIsPopupOpen(false);
-  };
+  const handleClosePopup = () => setIsPopupOpen(false);
 
   return (
     <div className="app">
@@ -80,11 +74,11 @@ const App = () => {
         <Sidebar
           groups={groups}
           onSelectGroup={handleSelectGroup}
-          onCreateGroup={handleOpenPopup} // Open popup when "+" button is clicked
+          onCreateGroup={handleOpenPopup}
         />
       </div>
 
-      {/* Main content visibility controlled by isSidebarVisible */}
+      {/* Main content controlled by isSidebarVisible */}
       <div className={`main-content ${isSidebarVisible ? '' : 'active'}`}>
         {selectedGroup ? (
           <div className="group-content">
@@ -106,14 +100,12 @@ const App = () => {
                 .map((note) => (
                   <div key={note.id} className="note-item">
                     <p>{note.text}</p>
-                    <small>
-                      {note.date} • {note.time}
-                    </small>
+                    <small>{note.date} • {note.time}</small>
                   </div>
                 ))}
             </div>
 
-            {/* Input area at the bottom */}
+            {/* Note input area */}
             <NoteInput ref={noteInputRef} onAddNote={handleAddNote} />
           </div>
         ) : (
@@ -134,7 +126,7 @@ const App = () => {
         )}
       </div>
 
-      {/* Group creation popup, rendered when isPopupOpen is true */}
+      {/* Group creation popup */}
       {isPopupOpen && (
         <GroupPopup
           onClose={handleClosePopup}
